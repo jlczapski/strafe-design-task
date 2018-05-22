@@ -1,0 +1,90 @@
+// BACKGROUND IMAGE OVERLAY
+@mixin overlay-1 {
+	box-shadow: inset 0 0 0 2000px rgba(37,190,161,0.85); // Mixin to create green overlay for bg images, using interior box shadow
+}
+
+@mixin overlay-2 {
+	box-shadow: inset 0 0 0 2000px rgba(55,66,82,0.85); // Mixin to create blue overlay for bg images, using interior box shadow
+}
+
+// RESPONSIVE RESIZE
+@mixin responsive ($width) { // Mixin for adjusting content at breakpoints defined in 'variables.scss'
+	@if $width == wide-screens {
+		@media only screen and (max-width: $width-l) { // Use content placeholders for styles to be altered at large, medium & small breakpoints
+			@content;}
+		}
+	@else if $width == medium-screens {
+		@media only screen and (max-width: $width-m) { // See above
+			@content;}
+		}
+	@else if $width == small-screens {
+		@media only screen and (max-width: $width-s) { // See above
+			@content;}
+		}
+	}
+
+// FLUID TYPE
+@mixin fluid-type($properties, $min-vw, $max-vw, $min-value, $max-value) {
+  @each $property in $properties {
+    #{$property}: $min-value;  // Mixin to responsively resize text between defined breakpoints, solution taken from Indrek Paas @: https://www.sassmeister.com/gist/7f22e44ace49b5124eec 
+  }
+
+  @media screen and (min-width: $min-vw) {
+    @each $property in $properties {
+      #{$property}: calc(#{$min-value} + #{strip-unit($max-value - $min-value)} * (100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)});
+    }
+  }
+
+  @media screen and (min-width: $max-vw) {
+    @each $property in $properties {
+      #{$property}: $max-value;
+    }
+  }
+}
+
+@function strip-unit($value) {
+  @return $value / ($value * 0 + 1);
+}
+
+// CENTERING
+@mixin center {
+	display: table; // Mixin for centering content using table display
+	margin: 0 auto;
+}
+
+@mixin center-one {
+	display: -webkit-box; // Mixin for centering using flex display
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+    justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+    align-items: center;
+}
+
+@mixin center-two {
+	display: -webkit-box; // Mixin for centering using flex display, without centering internal content (align-items)
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+}
+
+// HOVER EFFECTS
+@mixin hover-green {
+	border-color: $accent; // Mixin for altering border & text color to green, upon div:hover
+	color: $accent;
+}
+
+@mixin hover-blue {
+	color: $font-dark; // Mixin for altering text color to blue, upon div:hover
+}
+
+@mixin transition {
+	transition: .3s ease-in-out; // Mixin for adding smooth 0.3s transition to :hover effects
+}
+
+

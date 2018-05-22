@@ -1,0 +1,560 @@
+@import 'variables.scss';
+@import 'mixins.scss';
+@import 'placeholders.scss';
+
+// GLOBAL STYLES
+html {
+	font-size: 16px;
+}
+
+body {
+	text-rendering: optimizeLegibility; // Make fonts as clear & crisp as possible
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+}
+ 
+// MAIN DIV STYLES 
+.top {
+	@extend %bg-image; // Include bg image placeholder
+	@include overlay-1; // Add green overlay
+	background-image: url('../images/bg-one.jpg');
+	height: auto;
+	padding: 0 0 12px 0;
+	@include responsive(wide-screens) {
+		padding: 0 0 12px 0;
+	}
+}
+
+.services {
+	background-color: $background; // Set deep blue background
+	height: auto;
+	padding-bottom: 48px;
+	margin: 0 auto;
+}
+
+#title-outer {
+    position: relative;
+}
+
+.about {
+	padding: 0 0 48px 0;
+}
+
+#round-two, #round-three, #round-four, #round-five {
+	margin-top: 24px; // Margins for rounded rectangles
+}
+
+#popup-outer-1, #popup-outer-2, #popup-outer-3, #popup-outer-4 {
+	margin: 0 auto;
+	@include center-one; // Center content using flex display
+	opacity: 0; // Make popup content invisible initially
+	@include transition; // Smooth transition speed
+	border-bottom: 3px solid #fff;
+}
+
+#gal-1 {
+	@extend %bg-image; // Add bg image
+	@include overlay-2; // Add deep blue overlay
+	@include center-one; // Center content using flex display
+	background-image: url('../images/img-1.jpg');
+	height: 400px;
+	position: relative; // Set relative positioning for logo to be centered
+	padding: 48px;
+	@include transition; // Smooth transition speed
+}
+
+#gal-2 {
+	@extend %bg-image; // Repeat '#gal-1' styling, change bg image
+	@include overlay-2;
+	@include center-one;
+	background-image: url('../images/img-2.jpg');
+	height: 400px;
+	position: relative;
+	padding: 48px;
+	@include transition;
+}
+
+#gal-3 {
+	@extend %bg-image; // Repeat '#gal-1' styling, change bg image
+	@include overlay-2;
+	@include center-one;
+	background-image: url('../images/img-3.jpg');
+	height: 400px;
+	position: relative;
+	padding: 48px;
+	@include transition;
+}
+
+#gal-4 {
+	@extend %bg-image; // Repeat '#gal-1' styling, change bg image
+	@include overlay-2;
+	@include center-one;
+	background-image: url('../images/img-4.jpg');
+	height: 400px;
+	position: relative;
+	padding: 48px;
+	@include transition;
+}
+
+#gal-1:hover #gl-1, #gal-2:hover #gl-2, #gal-3:hover #gl-3, #gal-4:hover #gl-4 {
+	top: 75%; // Move logo down by 25% when parent div is hovered
+	@include transition; // Smooth transition speed
+}
+
+#gal-1:hover #popup-outer-1, #gal-2:hover #popup-outer-2, #gal-3:hover #popup-outer-3, #gal-4:hover #popup-outer-4 {
+	opacity: 1; // Make popup content visible when hovered
+	@include transition; // Smooth transition speed
+}
+
+#gal-1:hover, #gal-2:hover, #gal-3:hover, #gal-4:hover {
+	@include overlay-1; // Change overlay colour to green when hovered
+	@include transition; // Smooth transition speed
+}
+
+.details {
+	padding: 48px;
+}
+
+.map {
+	@extend %bg-image; // Add map bg image
+	background-image: url('../images/map.jpg');
+	height: 500px;
+	position: relative; // Set relative positioning for icon to be centered
+}
+
+.social-media {
+	background-color: $background; // Add deep blue background
+	height: auto;
+	padding: 24px 0 12px 0;
+}
+
+.copyright {
+	background-color: $background-dark; // Add deep blue background, darkened by 5%
+	height: auto;
+	padding: 12px 0 12px 0;
+}
+
+// NAVBAR STYLES
+#email {
+	margin-right: 60px;
+	text-decoration: underline; // Underline email text
+}
+.fixed-top {
+	padding: 12px 48px 12px 48px; // Create padding for navbar elements
+	@include responsive(medium-screens) {
+        padding: 12px 0 12px 0; // Remove left & right padding at 992px
+	}
+	height: auto;
+	@include transition; // Include smooth transition for colour change
+}
+.fixed-top.scrolled {
+    background-color: $background !important; // Change navbar bg colour to deep blue when JS function adds 'scrolled' class to navbar 'fixed-top'
+    @include transition; // Include smooth transition for colour change
+}
+
+.nav-wrapper ul li a, .side-nav li a {
+	font-family: $karla; // Set font stylings for nav text, remove hover background
+	text-transform: uppercase;
+	background-color: transparent;
+}
+
+#brand-logo { // Hide centered logo initially
+	visibility: hidden;
+	@include responsive(medium-screens) {
+		visibility: visible; // Reveal centered logo at nav collapse breakpoint (992px)
+	}
+}
+
+// ROW STYLES
+#title-row, #title-row-1 {
+	@include center-two; // Use flex display to center title rows
+	@include responsive(small-screens) {
+		@include center; // Center at small screen sizes
+	}
+	margin-top: 48px;
+	padding: 0 48px 0 48px;
+}
+
+#title-row-1 {
+	@include responsive(small-screens) {
+		margin-top: 0; // Remove second row top margin at 600px
+	}
+}
+
+#rounded-row {
+	margin-top: 48px; // Margin for row of rounded rectangles
+}
+
+#rounded-text {
+	@include center-one; // Apply flex display for text parent div
+	@include responsive(medium-screens) {
+		display: block; // Switch to block display at 992px, position title on top of description text
+	}
+}
+
+#info-row {
+	margin-top: 48px; // Margins for form & contact info row
+	display: -webkit-box; 
+	display: -ms-flexbox;
+	display: flex; // Use flex display to keep form & contact details divs the same height
+	margin-bottom: 0;
+	@include responsive(medium-screens) {
+		display: block; // Switch to block display at 992px, position form div on top of contact div
+	}
+}
+
+#rights-row {
+	margin-bottom: 0; // Removed whitespace from bottom of 'copyrights' div
+}
+
+// TEXT STYLES
+h1 {
+	@include fluid-type(font-size, 37.5em, 62em, $h1-min, $h1-max); // Set points between which text will scale responsively, add min & max font size values from variables file
+	@include center; // Center text within div
+	font-family: $karla;
+	font-weight: 700;
+	text-align: center;
+	text-transform: uppercase;
+	color: $font-light; // Font styles
+	margin-top: 96px;
+	margin-bottom: 24px;
+	@include responsive(wide-screens) {
+		margin-top: 72px; // Adjust margins as screen width changes
+	}
+	@include responsive(small-screens) {
+		margin-top: 48px; // Adjust margins as screen width changes
+	}
+	max-width: 11em; // Set max width for breakpoint in text
+}
+
+h2 {
+	@include fluid-type(font-size, 37.5em, 62em, $h2-min, $h2-max); // Set points between which text will scale responsively, add min & max font size values from variables file
+	font-family: $karla;
+	font-weight: 700;
+	text-transform: uppercase; // Font styles
+}
+
+h3 {
+	@include fluid-type(font-size, 37.5em, 62em, $h3-min, $h3-max); // Set points between which text will scale responsively, add min & max font size values from variables file
+	font-family: $karla;
+	font-weight: 700;
+	text-transform: uppercase; // Font styles
+}
+
+h4 {
+	@include fluid-type(font-size, 37.5em, 62em, $h4-min, $h4-max); // Set points between which text will scale responsively, add min & max font size values from variables file
+	font-family: $karla;
+	font-weight: 700;
+	text-transform: uppercase;
+	color: $font-light; // Font styles
+}
+
+p.desc {
+	@include center; // Include specific styles for top description
+	font-family: $garamond;
+	font-weight: 400;
+	font-style: italic;
+	color: $font-light;
+	text-align: center;
+	font-size: 18px;
+	max-width: 20em;
+	margin-bottom: 24px;
+}
+
+p.more {
+	@include center; // Include specific styles for 'learn more' text
+	font-family: $karla;
+	font-weight: 700;
+	color: $font-light;
+	text-transform: uppercase;
+}
+
+h1.services-title {
+	padding-top: 48px; // Adds spacing to top of 'services' title
+	margin-top: 0; // Removes whitespace at top of 'services' div
+}
+
+h4.title-one, h4.title-two {
+	color: $font-light; // Font colours
+}
+
+p.title-desc {
+	font-family: $garamond; // Include specific styles for title description text
+	color: $font-light;
+	font-size: 18px;
+	max-width: 18em;
+	@include responsive(small-screens) {
+		max-width: 15em; // Set max width at smaller sizes to keep text within div boundaries
+	}
+	@media (max-width: 400px) {
+		max-width: 12em; // See above
+	}
+	line-height: 1.35;
+	margin-top: 36px;
+}
+
+h1.about-title {
+    color: $font-dark; // Include specific styles for 'about' title
+    padding-top: 48px; // Add spacing to title
+    margin-top: 0; // Removes whitespace at top 
+}
+
+h2.one, h2.two, h2.three, h2.four, h2.five {
+   color: $inactive; // Set initial grey colour for rounded rectangle titles
+   @include responsive(medium-screens) {
+	   	text-align: center; // Center text & remove padding at 992px
+   	    margin: 0;
+   	    padding: 0;
+   }
+   @include transition; // Include smooth transition for colour change
+}
+
+p.one-text, p.two-text, p.three-text, p.four-text, p.five-text {
+	@include responsive(medium-screens) {
+		text-align: center; // Center description text at 992px
+	}
+	color: $inactive; // Set initial grey colour
+	@include transition; // Include smooth transition for colour change
+	font-family: $garamond;
+}
+
+h1.popup-number, h4.popup-text {
+    margin: 0; // Remove margin & padding from popup text
+    padding: 0;
+}
+
+h1.contact-title {
+	color: $font-dark;
+    padding-top: 48px; // Add padding to top of title
+    margin-top: 0; // Remove whitespace from top of 'contact' div
+}
+
+p.tellus {
+	@include center; // Center text
+	font-family: $garamond;
+	font-style: italic;
+	font-size: 18px;
+	text-align: center; // Font styles
+}
+
+h4.form-title {
+    margin-bottom: 24px; // Create space between title & form
+}
+
+p.rights {
+	font-family: $karla;
+	color: $font-light;
+	text-transform: uppercase;
+	font-size: 14px; // Font styles
+}
+
+// IMAGE STYLES
+#logo {
+	width: 60px; // Logo dimensions, add space between logo and nav elements
+	height: 52px;
+	margin-right: 24px;
+}
+
+#logo-middle {
+	width: 60px; // Middle logo dimensions
+	height: 52px;
+}
+
+#pencil, #thumb, #bulb {
+	width: 100%; // Make 'services' images responsive
+	height: auto;
+	@include responsive(small-screens) {
+		max-width: 90%; // Set max width for image at small screens to avoid overflow
+	}
+	position: absolute; // Position image below title to create 'border' effect
+	left: -15%;
+	top: 10%;
+	bottom: 0;
+	right: 0;
+	@media (min-width: 1200px) {
+		top: 4%; // Adjust top position at larger screen sizes, as image resizes
+	}
+	@media (min-width: 1500px) {
+		top: 1%; // Adjust top position at larger screen sizes, as image resizes
+	}
+}
+
+#gl-1, #gl-2, #gl-3, #gl-4 {
+	position: absolute; // Position gallery logos in exact center of parent div
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	width: 200px;
+	height: 62px;
+	@include responsive(medium-screens) {
+		width: 180px; // Resize gallery logos at 992px breakpoint
+		height: 56px;
+	}
+	@include transition; // Include smooth transition for slide down animation
+}
+
+#down-arrow-green {
+	@include center; // Center green downwards arrow
+	width: 30px; // Set dimensions & margin
+	height: 30px;
+	margin-top: 24px;
+}
+
+#logo-green {
+	width: 60px;
+	height: 52px; // Dimensions
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%); // Position green marker in exact center of div containing map
+}
+
+#twitter, #instagram {
+	width: 25px;
+	height: 25px;
+	margin-right: 12px; // Set logo dimensions & margins
+}
+
+// BOX STYLES
+.box-arrow {
+	@include center; // Center 'learn more' box 
+    width: 150px; 
+    height: auto;
+    background-color: transparent; // Set box inner to be transparent
+    border: 3px solid #FFF; // Add white border
+    padding: 6px;
+    margin-top: 24px;
+    margin-bottom: 48px;
+    @include responsive(small-screens) {
+    	margin-top: 36px; // Alter margins as screen resizes
+    }
+}
+
+.box-outer {
+	position: relative; // Set relative positioning for arrow styles
+}
+
+#down-arrow {
+	width: 20px; // Dimensions
+	height: 20px;
+	position: absolute; // Position down arrow at very bottom & center of 'learn more' box, 
+	bottom: 0;
+	top: 100%;
+	left: 50%;
+	transform: translate(-50%, 0%);
+}
+
+.rounded-one, .rounded-two, .rounded-three, .rounded-four, .rounded-five {
+	width: 100%; // Set rounded rectangle to full width of parent div
+	height: auto;
+	background-color: transparent; // Make rectangle inner transparent
+	border: 3px solid $inactive; // Set solid grey border for initial colour
+	border-radius: 72px; // Add rounded corners
+	padding: 6px 24px 6px 24px;
+	@include responsive(small-screens) {
+		padding: 12px 24px 0 24px; // Adjust padding at smaller screen sizes
+	}
+	@include transition; // Include smooth transition for colour change
+}
+
+.rounded-one:hover, .rounded-two:hover, .rounded-three:hover, .rounded-four:hover, .rounded-five:hover {
+	@include hover-green; // Add mixin when rectangles are hovered to change text colour & border color 
+	@include transition; // Add mixin for smooth transition in colour change
+}
+
+.rounded-one:hover h2, .rounded-two:hover h2, .rounded-three:hover h2, .rounded-four:hover h2, .rounded-five:hover h2 {
+	@include hover-green; // Add mixin when rectangles are hovered to change text colour & border color
+	@include transition; // Add mixin for smooth transition in colour change
+}
+
+.rounded-one:hover p, .rounded-two:hover p, .rounded-three:hover p, .rounded-four:hover p, .rounded-five:hover p {
+	@include hover-blue; // Add mixin to change p colour to blue when rectangles are hovered
+	@include transition; // Add mixin for smooth transition in colour change
+}
+
+.box-submit {
+    width: 150px; // Set dimensions for submit button
+    height: auto;
+    background-color: transparent; // Make div inner transparent
+    border: 3px solid #FFF; // Add white border
+    padding: 6px;
+    margin-top: 24px;
+    margin-bottom: 48px; // Margins & padding
+    @include responsive(small-screens) {
+    	margin-top: 36px; // Adjust margin at smaller screen sizes
+    }
+}
+
+// FORM
+#form {
+	background-color: $accent; // Set bg color for form div
+	height: auto;
+	padding: 24px 72px 24px 72px; // Padding
+	-webkit-box-flex: 1;
+	-ms-flex: 1;
+	flex: 1; // Use flex:1 to maintain same height as 'details' div as screen resizes
+}
+
+#form input[type=text]:not(.browser-default), #form textarea[type=text]:not(.browser-default) {
+    border-bottom: 1px solid $font-light;
+    box-shadow: none !important;
+    color: $font-dark;
+    background-color: $font-light;
+    padding: 3px 12px 3px 12px;
+    box-sizing: border-box; // All above styles are overriding Materialize's default input & form styles, in order to fit PSD design
+}
+
+input::-webkit-input-placeholder {
+	color: $inactive;
+}
+
+input:-moz-placeholder {
+	color: $inactive;  
+}
+
+input::-moz-placeholder { 
+	color: $inactive; 
+}
+
+input:-ms-input-placeholder {  
+	color: $inactive;  // All above are used to change color of form placeholder text to 'inactive' grey
+}
+
+// DETAILS 
+#details {
+	background-color: $background; // Set bg color for 'details' div
+	height: auto;
+	padding: 72px;;
+	-webkit-box-flex: 1;
+	-ms-flex: 1;
+	flex: 1; // Use flex:1 to maintain same height as 'form' div as screen resizes
+}
+
+#email-1 {
+    text-decoration: underline;
+    text-decoration-color: $accent; // Underline email address & change underline color to 'accent' green
+}
+
+// SYMBOL STYLES
+#vertical-bar {
+	color: $accent; // Change color of vertical bar to 'accent' green
+}
+
+#arrow {
+	color: $accent; // Change color of right arrows to 'accent' green
+}
+
+@media (hover: none) {
+	p.one-text, p.two-text, p.three-text, p.four-text, p.five-text {
+		color: $background; // Change rounded rectangle 'p' color to deep blue when :hover is unavailable (mobile devices) 
+	}
+	.rounded-one, .rounded-two, .rounded-three, .rounded-four, .rounded-five {
+		border: 3px solid $accent; // Change rounded rectangle border color to vivid green when :hover is unavailable (mobile devices) 
+	}
+	h2.one, h2.two, h2.three, h2.four, h2.five {
+		color: $accent; // Change rounded rectangle title color to vivid green when :hover is unavailable (mobile devices) 
+	}
+
+}
+

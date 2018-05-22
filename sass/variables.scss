@@ -1,0 +1,35 @@
+// COLOUR PALETTE
+$accent: #25bea1; // Vivid green
+$background: #374252; // Deep blue
+$background-dark: darken($background, 5%); // Darken 'background' by 5%
+$font-light: #fff; // White
+$font-dark: #374252; // Deep blue
+$inactive: #dedfdf; // Light grey
+
+// FONTS
+$karla: 'Karla', sans-serif; // Sans-serif font
+$garamond: 'adobe-garamond-pro', serif; // Serif font
+
+// TYPE SCALE
+$mod-1: 1.40; // Modular scale for large screens
+$mod-2: 1.28; // Modular scale for small screens
+
+$h1-max: $mod-1 * $mod-1 * $mod-1 * $mod-1 * 1rem; // Calculate max h1 font size
+$h1-min: $mod-2 * $mod-2 * $mod-2 * $mod-2 * 1rem; // Calculate min h1 font size
+
+$h2-max: $mod-1 * $mod-1 * $mod-1 * 1rem; // Calculate max h2 font size
+$h2-min: $mod-2 * $mod-2 * $mod-2 * 1rem; // Calculate min h2 font size
+
+$h3-max: $mod-1 * $mod-1 * 1rem; // Calculate max h3 font size
+$h3-min: $mod-2 * $mod-2 * 1rem; // Calculate min h3 font size
+
+$h4-max: $mod-1 * 1rem; // Calculate max h4 font size
+$h4-min: $mod-2 * 1rem; // Calculate min h4 font size
+
+$h5-max: 1rem; // Calculate max h5 font size
+$h5-min: 1rem; // Calculate min h5 font size
+
+// BREAKPOINTS 1
+$width-l: 1200px; // Wide screens breakpoint
+$width-m: 992px; // Medium screens breakpoint
+$width-s: 600px; // Small screens breakpoint
